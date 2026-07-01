@@ -5,22 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Seni Seviyorum — Dünya Dillerinde</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <div class="frame"></div>
+
   <div class="stage">
-    <div class="stars" id="stars"></div>
+    <div class="motes" id="motes"></div>
     <div class="floating-hearts" id="floatingHearts"></div>
 
     <header class="hero">
+      <span class="corner corner-tl" aria-hidden="true"></span>
+      <span class="corner corner-tr" aria-hidden="true"></span>
+
+      <span class="star-mark" aria-hidden="true">✦</span>
       <p class="eyebrow">bir cümle, bin dil</p>
+      <span class="quote-backdrop" aria-hidden="true">❝</span>
       <h1 class="title">
         <span class="title-line">Seni</span>
         <span class="title-line accent">Seviyorum</span>
       </h1>
-      <p class="subtitle">Dünyanın dört bir yanında, aynı üç kelime — her dilde kendi rengini bulur.</p>
+      <p class="subtitle">Dünyanın dört bir yanında, aynı üç kelime — her dilde kendi sesini bulur.</p>
+      <div class="divider"><span></span><i>✦</i><span></span></div>
     </header>
 
     <!-- 3D dönen kalp: sayfanın imza öğesi -->
@@ -34,7 +42,8 @@
     </div>
 
     <section class="carousel-wrap">
-      <p class="carousel-caption">Kartın üzerine gel, dünyayı çevir</p>
+      <div class="divider"><span></span><i>✦</i><span></span></div>
+      <p class="carousel-caption">kartın üzerine gel, dünyayı çevir</p>
       <div class="carousel-viewport">
         <div class="carousel-3d" id="carousel"></div>
       </div>
@@ -46,11 +55,15 @@
     </section>
 
     <section class="grid-wrap">
+      <div class="divider"><span></span><i>✦</i><span></span></div>
       <h2 class="grid-title">Tüm Diller</h2>
       <div class="lang-grid" id="langGrid"></div>
     </section>
 
     <footer class="footer">
+      <span class="corner corner-bl" aria-hidden="true"></span>
+      <span class="corner corner-br" aria-hidden="true"></span>
+      <i class="footer-mark">♥</i>
       <p>Aşk çevrilmez, sadece yankılanır.</p>
     </footer>
   </div>
