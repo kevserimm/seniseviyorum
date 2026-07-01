@@ -145,6 +145,65 @@ header {
 }
 
 /* ════════════════════════════════════
+   SPEAKER BUTTON
+   ════════════════════════════════════ */
+.speak-btn {
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color: var(--accent);
+  border-radius: 100px;
+  width: 2rem;
+  height: 2rem;
+  font-size: .85rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .25s, border-color .25s, background .25s;
+}
+
+.speak-btn:hover {
+  border-color: rgba(212,160,181,0.5);
+  background: var(--accent-glow);
+  transform: scale(1.08);
+}
+
+.speak-btn.speaking {
+  animation: speak-pulse 0.7s ease-in-out infinite;
+}
+
+@keyframes speak-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.18); }
+}
+
+.hero-speak {
+  margin-top: 1.4rem;
+}
+
+.ring-card .speak-btn {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  font-size: .68rem;
+}
+
+.speak-btn.small {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: .62rem;
+}
+
+.lang-cell {
+  position: relative;
+}
+
+/* ════════════════════════════════════
    DIVIDER
    ════════════════════════════════════ */
 .divider {
@@ -213,6 +272,149 @@ header {
   flex: 1;
   height: 1px;
   background: var(--border);
+}
+
+/* ════════════════════════════════════
+   BİRLİKTE GEÇEN ZAMAN
+   ════════════════════════════════════ */
+.time-wrap {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.6rem 1.5rem;
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  position: relative;
+  overflow: hidden;
+}
+
+.time-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+}
+
+.tt-grid {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+}
+
+.tt-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+}
+
+.tt-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 2.6rem;
+  color: var(--text);
+  line-height: 1;
+}
+
+.tt-word {
+  font-size: .58rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.text-link {
+  margin-top: 1.8rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.text-link:hover {
+  color: var(--accent);
+}
+
+.time-form-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--text);
+  margin-bottom: 1.4rem;
+  line-height: 1.5;
+}
+
+.time-form-row {
+  display: flex;
+  justify-content: center;
+  gap: .8rem;
+  flex-wrap: wrap;
+}
+
+.time-form-row input[type="date"] {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: .6rem 1.1rem;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: .82rem;
+  color-scheme: dark;
+}
+
+.pill-btn {
+  background: linear-gradient(160deg, rgba(212,160,181,0.22), rgba(212,160,181,0.08));
+  border: 1px solid rgba(212,160,181,0.4);
+  color: var(--text);
+  border-radius: 100px;
+  padding: .6rem 1.6rem;
+  font-family: 'Inter', sans-serif;
+  font-size: .8rem;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: transform .25s, background .25s;
+}
+
+.pill-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(160deg, rgba(212,160,181,0.32), rgba(212,160,181,0.12));
+}
+
+/* ════════════════════════════════════
+   SÜRPRİZ NOT
+   ════════════════════════════════════ */
+.note-wrap {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.8rem 1.5rem;
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.sweet-note {
+  margin-top: 1.8rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 34rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ════════════════════════════════════
