@@ -1,73 +1,60 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Seni Seviyorum — Dünya Dillerinde</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seni Seviyorum — Dünyanın Her Dilinde</title>
+    <meta name="description" content="Seni seviyorum — dünyanın dört bir yanındaki dillerde, dönen bir 3D vitrinle." />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap"
+        rel="stylesheet" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <canvas id="three-canvas"></canvas>
 
-  <div class="frame"></div>
+    <div class="site">
 
-  <div class="stage">
-    <div class="motes" id="motes"></div>
-    <div class="floating-hearts" id="floatingHearts"></div>
+        <!-- HEADER / HERO -->
+        <header id="hdr">
+            <div class="logo-ring"><span>♥</span></div>
+            <p class="site-sub">Bir cümle · Yüzlerce dil</p>
 
-    <header class="hero">
-      <span class="corner corner-tl" aria-hidden="true"></span>
-      <span class="corner corner-tr" aria-hidden="true"></span>
+            <h1 class="hero-phrase" id="hero-phrase">Seni seviyorum</h1>
+            <p class="hero-lang" id="hero-lang">Türkçe</p>
 
-      <span class="star-mark" aria-hidden="true">✦</span>
-      <p class="eyebrow">bir cümle, bin dil</p>
-      <span class="quote-backdrop" aria-hidden="true">❝</span>
-      <h1 class="title">
-        <span class="title-line">Seni</span>
-        <span class="title-line accent">Seviyorum</span>
-      </h1>
-      <p class="subtitle">Dünyanın dört bir yanında, aynı üç kelime — her dilde kendi sesini bulur.</p>
-      <div class="divider"><span></span><i>✦</i><span></span></div>
-    </header>
+            <div class="hero-dots" id="hero-dots"></div>
+        </header>
 
-    <!-- 3D dönen kalp: sayfanın imza öğesi -->
-    <div class="heart-scene">
-      <div class="heart-orbit-ring ring-1"></div>
-      <div class="heart-orbit-ring ring-2"></div>
-      <div class="heart-3d" id="heart3d">
-        <div class="heart-face front"></div>
-        <div class="heart-face back"></div>
-      </div>
+        <!-- 3D CAROUSEL -->
+        <div class="divider" id="div1"><span>Döne Döne Söylenen</span></div>
+        <section class="carousel-wrap" id="carousel-card">
+            <div class="stage">
+                <div class="ring" id="ring"></div>
+            </div>
+            <p class="carousel-hint">Sürükle ya da bırak, kendi kendine dönsün</p>
+        </section>
+
+        <!-- FULL GRID -->
+        <div class="divider" id="div2"><span>Hepsi Bir Arada</span></div>
+        <section class="grid-wrap" id="grid-card">
+            <div class="card-tag">50 dilde aynı duygu</div>
+            <div class="lang-grid" id="lang-grid"></div>
+        </section>
+
+        <footer id="ftr">Hangi dilde söylersem söyleyeyim, kastettiğim hep sensin &nbsp;<em>♥</em></footer>
     </div>
 
-    <section class="carousel-wrap">
-      <div class="divider"><span></span><i>✦</i><span></span></div>
-      <p class="carousel-caption">kartın üzerine gel, dünyayı çevir</p>
-      <div class="carousel-viewport">
-        <div class="carousel-3d" id="carousel"></div>
-      </div>
-      <div class="carousel-controls">
-        <button id="prevBtn" aria-label="Önceki dil">‹</button>
-        <button id="playBtn" aria-label="Döndürmeyi durdur / başlat">⏸</button>
-        <button id="nextBtn" aria-label="Sonraki dil">›</button>
-      </div>
-    </section>
-
-    <section class="grid-wrap">
-      <div class="divider"><span></span><i>✦</i><span></span></div>
-      <h2 class="grid-title">Tüm Diller</h2>
-      <div class="lang-grid" id="langGrid"></div>
-    </section>
-
-    <footer class="footer">
-      <span class="corner corner-bl" aria-hidden="true"></span>
-      <span class="corner corner-br" aria-hidden="true"></span>
-      <i class="footer-mark">♥</i>
-      <p>Aşk çevrilmez, sadece yankılanır.</p>
-    </footer>
-  </div>
-
-<script src="script.js"></script>
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- App -->
+    <script src="script.js"></script>
 </body>
 </html>
