@@ -1,169 +1,355 @@
-/* ============================================
-   VERİ: Dünya dillerinde "Seni Seviyorum"
-   ============================================ */
+/* ════════════════════════════════════
+   DATA — "SENİ SEVİYORUM" / DÜNYA DİLLERİ
+   ════════════════════════════════════ */
 const LANGUAGES = [
-  { lang: "Türkçe",     flag: "🇹🇷", phrase: "Seni Seviyorum" },
-  { lang: "İngilizce",  flag: "🇬🇧", phrase: "I Love You" },
-  { lang: "Fransızca",  flag: "🇫🇷", phrase: "Je t'aime" },
-  { lang: "İspanyolca", flag: "🇪🇸", phrase: "Te Amo" },
-  { lang: "İtalyanca",  flag: "🇮🇹", phrase: "Ti Amo" },
-  { lang: "Almanca",    flag: "🇩🇪", phrase: "Ich Liebe Dich" },
-  { lang: "Portekizce", flag: "🇵🇹", phrase: "Eu Te Amo" },
-  { lang: "Rusça",      flag: "🇷🇺", phrase: "Ya Lyublyu Tebya" },
-  { lang: "Japonca",    flag: "🇯🇵", phrase: "Aishiteru" },
-  { lang: "Korece",     flag: "🇰🇷", phrase: "Saranghae" },
-  { lang: "Çince",      flag: "🇨🇳", phrase: "Wǒ Ài Nǐ" },
-  { lang: "Arapça",     flag: "🇸🇦", phrase: "Uhibbuka" },
-  { lang: "Hintçe",     flag: "🇮🇳", phrase: "Main Tumse Pyaar Karta Hoon" },
-  { lang: "Yunanca",    flag: "🇬🇷", phrase: "S'agapo" },
-  { lang: "Lehçe",      flag: "🇵🇱", phrase: "Kocham Cię" },
-  { lang: "İsveççe",    flag: "🇸🇪", phrase: "Jag Älskar Dig" },
-  { lang: "Felemenkçe", flag: "🇳🇱", phrase: "Ik Hou Van Jou" },
-  { lang: "Farsça",     flag: "🇮🇷", phrase: "Dooset Daram" },
-  { lang: "Vietnamca",  flag: "🇻🇳", phrase: "Anh Yêu Em" },
-  { lang: "Endonezce",  flag: "🇮🇩", phrase: "Aku Cinta Kamu" },
-  { lang: "Swahili",    flag: "🇰🇪", phrase: "Nakupenda" },
-  { lang: "İbranice",   flag: "🇮🇱", phrase: "Ani Ohev Otach" },
-  { lang: "Fince",      flag: "🇫🇮", phrase: "Minä Rakastan Sinua" },
-  { lang: "Ukraynaca",  flag: "🇺🇦", phrase: "Ya Tebe Kokhayu" },
+  { lang: "Türkçe",           native: "Seni seviyorum" },
+  { lang: "İngilizce",        native: "I love you" },
+  { lang: "Fransızca",        native: "Je t'aime" },
+  { lang: "İspanyolca",       native: "Te amo" },
+  { lang: "İtalyanca",        native: "Ti amo" },
+  { lang: "Almanca",          native: "Ich liebe dich" },
+  { lang: "Portekizce",       native: "Eu te amo" },
+  { lang: "Rusça",            native: "Я тебя люблю", translit: "Ya tebya lyublyu" },
+  { lang: "Japonca",          native: "愛してる", translit: "Aishiteru" },
+  { lang: "Korece",           native: "사랑해", translit: "Saranghae" },
+  { lang: "Çince",            native: "我爱你", translit: "Wǒ ài nǐ" },
+  { lang: "Arapça",           native: "أحبك", translit: "Uhibbuka / Uhibbuki" },
+  { lang: "Farsça",           native: "دوستت دارم", translit: "Dooset dâram" },
+  { lang: "Hintçe",           native: "मैं तुमसे प्यार करता हूँ", translit: "Main tumse pyaar karta hoon" },
+  { lang: "Yunanca",          native: "Σ' αγαπώ", translit: "S'agapo" },
+  { lang: "Lehçe",            native: "Kocham cię" },
+  { lang: "Hollandaca",       native: "Ik hou van jou" },
+  { lang: "İsveççe",          native: "Jag älskar dig" },
+  { lang: "Norveççe",         native: "Jeg elsker deg" },
+  { lang: "Danca",            native: "Jeg elsker dig" },
+  { lang: "Fince",            native: "Minä rakastan sinua" },
+  { lang: "Çekçe",            native: "Miluji tě" },
+  { lang: "Macarca",          native: "Szeretlek" },
+  { lang: "Romence",          native: "Te iubesc" },
+  { lang: "Bulgarca",         native: "Обичам те", translit: "Obicham te" },
+  { lang: "Ukraynaca",        native: "Я тебе кохаю", translit: "Ya tebe kokhayu" },
+  { lang: "Sırpça",           native: "Волим те", translit: "Volim te" },
+  { lang: "Hırvatça",         native: "Volim te" },
+  { lang: "Vietnamca",        native: "Anh yêu em" },
+  { lang: "Tayca",            native: "ฉันรักคุณ", translit: "Chan rak khun" },
+  { lang: "Endonezce",        native: "Aku cinta padamu" },
+  { lang: "Malayca",          native: "Saya cintakan awak" },
+  { lang: "Filipince",        native: "Mahal kita" },
+  { lang: "İbranice",         native: "אני אוהב אותך", translit: "Ani ohev otach" },
+  { lang: "Svahili",          native: "Nakupenda" },
+  { lang: "Zuluca",           native: "Ngiyakuthanda" },
+  { lang: "Afrikaanca",       native: "Ek is lief vir jou" },
+  { lang: "İzlandaca",        native: "Ég elska þig" },
+  { lang: "İrlandaca",        native: "Tá grá agam duit" },
+  { lang: "Galce",            native: "Rwy'n dy garu di" },
+  { lang: "Katalanca",        native: "T'estimo" },
+  { lang: "Baskça",           native: "Maite zaitut" },
+  { lang: "Estonyaca",        native: "Ma armastan sind" },
+  { lang: "Letonca",          native: "Es tevi mīlu" },
+  { lang: "Litvanyaca",       native: "Aš tave myliu" },
+  { lang: "Ermenice",         native: "Ես սիրում եմ քեզ", translit: "Yes sirum em qez" },
+  { lang: "Gürcüce",          native: "მე შენ მიყვარხარ", translit: "Me shen mikvarkhar" },
+  { lang: "Azerice",          native: "Mən səni sevirəm" },
+  { lang: "Özbekçe",          native: "Men seni sevaman" },
+  { lang: "Moğolca",          native: "Би чамд хайртай", translit: "Bi chamd khairtai" },
 ];
 
-/* ============================================
-   ARKA PLAN: altın tozu zerreleri
-   ============================================ */
-function buildMotes() {
-  const wrap = document.getElementById("motes");
-  const count = 60;
-  for (let i = 0; i < count; i++) {
-    const s = document.createElement("span");
-    s.style.left = Math.random() * 100 + "%";
-    s.style.top = Math.random() * 100 + "%";
-    s.style.animationDelay = (Math.random() * 5).toFixed(2) + "s";
-    s.style.width = s.style.height = (Math.random() * 2 + 1.5).toFixed(1) + "px";
-    wrap.appendChild(s);
+/* subset used for the spinning 3D carousel — keep it light */
+const CAROUSEL_SET_SIZE = 14;
+const CAROUSEL_LANGS = LANGUAGES.filter((_, i) => i % Math.ceil(LANGUAGES.length / CAROUSEL_SET_SIZE) === 0).slice(0, CAROUSEL_SET_SIZE);
+
+/* ════════════════════════════════════
+   HERO — CYCLING PHRASE
+   ════════════════════════════════════ */
+let heroIndex = 0;
+let heroTimer = null;
+
+function paintHero(i) {
+  const item = LANGUAGES[i];
+  const phraseEl = document.getElementById('hero-phrase');
+  const langEl   = document.getElementById('hero-lang');
+
+  gsap.to(phraseEl, {
+    opacity: 0, y: -14, duration: 0.35, ease: 'power2.in',
+    onComplete: () => {
+      phraseEl.textContent = item.native;
+      langEl.textContent   = item.translit ? `${item.lang} · ${item.translit}` : item.lang;
+      gsap.fromTo(phraseEl, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out' });
+      gsap.fromTo(langEl,   { opacity: 0 },        { opacity: 1, duration: 0.6, delay: 0.1 });
+    }
+  });
+
+  document.querySelectorAll('.hero-dot').forEach((d, di) => d.classList.toggle('active', di === i % 10));
+}
+
+function buildHeroDots() {
+  const wrap = document.getElementById('hero-dots');
+  for (let i = 0; i < 10; i++) {
+    const d = document.createElement('span');
+    d.className = 'hero-dot';
+    wrap.appendChild(d);
   }
 }
 
-/* ============================================
-   ARKA PLAN: yükselen kalpler (tek tonlu)
-   ============================================ */
-function buildFloatingHearts() {
-  const wrap = document.getElementById("floatingHearts");
-  const symbols = ["♥"];
-  const count = 12;
-  for (let i = 0; i < count; i++) {
-    const h = document.createElement("span");
-    h.className = "fh";
-    h.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    h.style.left = Math.random() * 100 + "%";
-    const duration = 9 + Math.random() * 10;
-    h.style.animationDuration = duration.toFixed(1) + "s";
-    h.style.animationDelay = (Math.random() * duration).toFixed(1) + "s";
-    h.style.fontSize = (0.8 + Math.random() * 1.4).toFixed(2) + "rem";
-    wrap.appendChild(h);
-  }
+function startHeroCycle() {
+  paintHero(heroIndex);
+  heroTimer = setInterval(() => {
+    heroIndex = (heroIndex + 1) % LANGUAGES.length;
+    paintHero(heroIndex);
+  }, 2600);
 }
 
-/* ============================================
-   3D DÖNEN KARUSEL
-   ============================================ */
+/* ════════════════════════════════════
+   3D CAROUSEL (CSS transform ring)
+   ════════════════════════════════════ */
 function buildCarousel() {
-  const carousel = document.getElementById("carousel");
-  const featured = LANGUAGES.slice(0, 10); // ilk 10 dil karuselde döner
-  const radius = 320;
-  const step = 360 / featured.length;
+  const ring  = document.getElementById('ring');
+  const count = CAROUSEL_LANGS.length;
+  const angleStep = 360 / count;
 
-  featured.forEach((item, i) => {
-    const card = document.createElement("div");
-    card.className = "carousel-card";
-    card.style.transform = `rotateY(${i * step}deg) translateZ(${radius}px)`;
+  /* card width is set in CSS; compute radius so cards form a closed ring */
+  const cardWidth = window.innerWidth < 600 ? 150 : 190;
+  const radius = Math.round((cardWidth / 2) / Math.tan(Math.PI / count));
+
+  CAROUSEL_LANGS.forEach((item, i) => {
+    const card = document.createElement('div');
+    card.className = 'ring-card';
+    card.style.transform = `rotateY(${i * angleStep}deg) translateZ(${radius}px)`;
     card.innerHTML = `
-      <span class="cc-phrase">${item.phrase}</span>
-      <span class="cc-lang">${item.flag} ${item.lang}</span>
+      <div class="ring-card-native">${item.native}</div>
+      <div class="ring-card-lang">${item.lang}</div>
     `;
-    carousel.appendChild(card);
+    ring.appendChild(card);
   });
 
-  return { carousel, step };
+  /* auto-rotate + drag-to-spin */
+  let rotation = 0;
+  let autoSpeed = 0.05;
+  let dragging = false;
+  let lastX = 0;
+  let velocity = 0;
+
+  const stage = ring.parentElement;
+
+  function frame() {
+    if (!dragging) {
+      rotation += autoSpeed + velocity;
+      velocity *= 0.94;
+    }
+    ring.style.transform = `translateZ(-${radius}px) rotateY(${rotation}deg)`;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  function pointerDown(x) {
+    dragging = true;
+    lastX = x;
+    velocity = 0;
+  }
+  function pointerMove(x) {
+    if (!dragging) return;
+    const dx = x - lastX;
+    rotation += dx * 0.3;
+    velocity = dx * 0.3;
+    lastX = x;
+  }
+  function pointerUp() { dragging = false; }
+
+  stage.addEventListener('mousedown', e => pointerDown(e.clientX));
+  window.addEventListener('mousemove', e => pointerMove(e.clientX));
+  window.addEventListener('mouseup', pointerUp);
+
+  stage.addEventListener('touchstart', e => pointerDown(e.touches[0].clientX), { passive: true });
+  stage.addEventListener('touchmove',  e => pointerMove(e.touches[0].clientX), { passive: true });
+  stage.addEventListener('touchend', pointerUp);
 }
 
-function setupCarouselControls(carousel, step) {
-  const playBtn = document.getElementById("playBtn");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-
-  let manualAngle = 0;
-  let playing = true;
-
-  function pauseAnimation() {
-    if (playing) {
-      const computed = getComputedStyle(carousel).transform;
-      carousel.classList.add("paused");
-      carousel.style.animation = "none";
-      carousel.style.transform = computed === "none" ? "" : computed;
-      playing = false;
-      playBtn.textContent = "▶";
-    }
-  }
-
-  function resumeAnimation() {
-    carousel.style.animation = "";
-    carousel.classList.remove("paused");
-    carousel.style.transform = "";
-    playing = true;
-    playBtn.textContent = "⏸";
-  }
-
-  playBtn.addEventListener("click", () => {
-    if (playing) {
-      pauseAnimation();
-    } else {
-      resumeAnimation();
-    }
-  });
-
-  nextBtn.addEventListener("click", () => {
-    pauseAnimation();
-    manualAngle -= step;
-    carousel.style.transform = `rotateY(${manualAngle}deg)`;
-  });
-
-  prevBtn.addEventListener("click", () => {
-    pauseAnimation();
-    manualAngle += step;
-    carousel.style.transform = `rotateY(${manualAngle}deg)`;
-  });
-}
-
-/* ============================================
-   TÜM DİLLER — FLIP KART IZGARASI
-   ============================================ */
+/* ════════════════════════════════════
+   FULL GRID
+   ════════════════════════════════════ */
 function buildGrid() {
-  const grid = document.getElementById("langGrid");
-  LANGUAGES.forEach((item) => {
-    const card = document.createElement("div");
-    card.className = "flip-card";
-    card.tabIndex = 0;
-    card.innerHTML = `
-      <div class="flip-face flip-front">
-        <span class="fc-flag">${item.flag}</span>
-        <span class="fc-lang">${item.lang}</span>
-      </div>
-      <div class="flip-face flip-back">
-        <span class="fc-phrase">${item.phrase}</span>
-      </div>
+  const grid = document.getElementById('lang-grid');
+  LANGUAGES.forEach(item => {
+    const cell = document.createElement('div');
+    cell.className = 'lang-cell';
+    cell.innerHTML = `
+      <div class="lang-cell-native">${item.native}</div>
+      ${item.translit ? `<div class="lang-cell-translit">${item.translit}</div>` : ``}
+      <div class="lang-cell-name">${item.lang}</div>
     `;
-    grid.appendChild(card);
+    grid.appendChild(cell);
   });
 }
 
-/* ============================================
-   BAŞLAT
-   ============================================ */
-document.addEventListener("DOMContentLoaded", () => {
-  buildMotes();
-  buildFloatingHearts();
-  const { carousel, step } = buildCarousel();
-  setupCarouselControls(carousel, step);
-  buildGrid();
+/* ════════════════════════════════════
+   THREE.JS SCENE — AMBIENT BACKGROUND
+   ════════════════════════════════════ */
+(function initThree() {
+  const canvas   = document.getElementById('three-canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
+
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = 32;
+
+  function resize() {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  /* ── STAR FIELD ── */
+  function makeStars(count, spread, size, opacity, col) {
+    const geo = new THREE.BufferGeometry();
+    const p   = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      p[i * 3]     = (Math.random() - 0.5) * spread;
+      p[i * 3 + 1] = (Math.random() - 0.5) * spread;
+      p[i * 3 + 2] = (Math.random() - 0.5) * (spread * 0.5) - 5;
+    }
+    geo.setAttribute('position', new THREE.BufferAttribute(p, 3));
+    return new THREE.Points(geo, new THREE.PointsMaterial({ color: col, size, transparent: true, opacity, sizeAttenuation: true }));
+  }
+
+  const starsMain = makeStars(2200, 140, 0.13, 0.75, 0xffffff);
+  const starsDim  = makeStars(800,  160, 0.09, 0.35, 0xffeef4);
+  const starsPink = makeStars(180,  100, 0.18, 0.55, 0xd4a0b5);
+  scene.add(starsMain, starsDim, starsPink);
+
+  /* ── WIREFRAME HEARTS ── */
+  function makeHeart(scale, x, y, z, opacity) {
+    const shape = new THREE.Shape();
+    shape.moveTo(0, 0.4 * scale);
+    shape.bezierCurveTo(0, 0.6 * scale, -0.45 * scale, 0.6 * scale, -0.45 * scale, 0.2 * scale);
+    shape.bezierCurveTo(-0.45 * scale, -0.1 * scale, 0, -0.35 * scale, 0, -0.55 * scale);
+    shape.bezierCurveTo(0, -0.35 * scale, 0.45 * scale, -0.1 * scale, 0.45 * scale, 0.2 * scale);
+    shape.bezierCurveTo(0.45 * scale, 0.6 * scale, 0, 0.6 * scale, 0, 0.4 * scale);
+
+    const pts = shape.getPoints(60);
+    const geo = new THREE.BufferGeometry().setFromPoints(pts.map(p => new THREE.Vector3(p.x, p.y, 0)));
+    const line = new THREE.LineLoop(geo, new THREE.LineBasicMaterial({ color: 0xd4a0b5, transparent: true, opacity }));
+    line.position.set(x, y, z);
+    return line;
+  }
+
+  const heart1 = makeHeart(12, -14,  3, -18, 0.06);
+  const heart2 = makeHeart( 7,  15, -6, -14, 0.05);
+  const heart3 = makeHeart( 4,  -2,  9, -10, 0.09);
+  scene.add(heart1, heart2, heart3);
+
+  /* ── DRIFTING PINK ORBS ── */
+  const orbs = [];
+  for (let i = 0; i < 14; i++) {
+    const r    = Math.random() * 0.35 + 0.08;
+    const g    = new THREE.SphereGeometry(r, 6, 6);
+    const m    = new THREE.MeshBasicMaterial({
+      color:       i % 2 === 0 ? 0xd4a0b5 : 0xffffff,
+      transparent: true,
+      opacity:     Math.random() * 0.18 + 0.04,
+      wireframe:   true,
+    });
+    const mesh = new THREE.Mesh(g, m);
+    mesh.position.set(
+      (Math.random() - 0.5) * 44,
+      (Math.random() - 0.5) * 44,
+      (Math.random() - 0.5) * 18 - 4
+    );
+    mesh.userData = {
+      vy:    (Math.random() - 0.5) * 0.006,
+      vx:    (Math.random() - 0.5) * 0.004,
+      phase: Math.random() * Math.PI * 2,
+    };
+    scene.add(mesh);
+    orbs.push(mesh);
+  }
+
+  /* ── MOUSE PARALLAX ── */
+  let mx = 0, my = 0;
+  window.addEventListener('mousemove', e => {
+    mx = (e.clientX / window.innerWidth  - 0.5) * 2;
+    my = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  /* ── RENDER LOOP ── */
+  let t = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    t += 0.005;
+
+    starsMain.rotation.y =  t * 0.025;
+    starsMain.rotation.x =  t * 0.008;
+    starsDim.rotation.y  = -t * 0.018;
+    starsPink.rotation.y =  t * 0.04;
+    starsPink.rotation.z =  t * 0.012;
+
+    heart1.rotation.z    = Math.sin(t * 0.3) * 0.04;
+    heart1.position.y    = 3  + Math.sin(t * 0.4) * 0.8;
+    heart2.rotation.z    = -Math.sin(t * 0.25) * 0.03;
+    heart2.position.y    = -6 + Math.cos(t * 0.35) * 0.6;
+    heart3.rotation.z    = Math.sin(t * 0.5) * 0.06;
+    heart3.position.y    = 9  + Math.sin(t * 0.45) * 0.5;
+
+    heart1.material.opacity = 0.05 + Math.sin(t * 0.7) * 0.025;
+    heart3.material.opacity = 0.07 + Math.sin(t * 0.9) * 0.03;
+
+    orbs.forEach(o => {
+      o.position.x += o.userData.vx;
+      o.position.y += o.userData.vy + Math.sin(t * 0.8 + o.userData.phase) * 0.004;
+      if (Math.abs(o.position.x) > 24) o.userData.vx *= -1;
+      if (Math.abs(o.position.y) > 24) o.userData.vy *= -1;
+    });
+
+    camera.position.x += (mx * 2.5 - camera.position.x) * 0.03;
+    camera.position.y += (-my * 1.8 - camera.position.y) * 0.03;
+    camera.lookAt(0, 0, 0);
+
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+
+/* ════════════════════════════════════
+   GSAP SCROLL REVEALS
+   ════════════════════════════════════ */
+gsap.registerPlugin(ScrollTrigger);
+
+window.addEventListener('load', () => {
+  gsap.to('#hdr', { opacity: 1, y: 0, duration: 1.4, ease: 'power3.out', delay: 0.2 });
+
+  ['#div1', '#carousel-card', '#div2', '#grid-card', '#ftr'].forEach((sel, i) => {
+    gsap.to(sel, {
+      scrollTrigger: { trigger: sel, start: 'top 88%' },
+      opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: i * 0.05,
+    });
+  });
 });
+
+/* ════════════════════════════════════
+   CLICK HEARTS
+   ════════════════════════════════════ */
+const HEARTS = ['♡', '♥', '✦', '·', '✧', '❋'];
+
+document.addEventListener('click', e => {
+  for (let i = 0; i < 5; i++) {
+    const el    = document.createElement('span');
+    el.className = 'float-heart';
+    const angle  = Math.random() * 80 - 40;
+    el.style.cssText = `left:${e.clientX + Math.cos(angle) * 10}px;top:${e.clientY}px;color:${Math.random() > .5 ? '#d4a0b5' : 'rgba(255,255,255,0.6)'};`;
+    el.style.animationDelay = `${i * 0.08}s`;
+    el.textContent = HEARTS[Math.floor(Math.random() * HEARTS.length)];
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1500);
+  }
+});
+
+/* ════════════════════════════════════
+   INIT
+   ════════════════════════════════════ */
+buildHeroDots();
+startHeroCycle();
+buildCarousel();
+buildGrid();
