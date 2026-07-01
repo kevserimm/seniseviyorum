@@ -239,13 +239,14 @@ function buildGrid() {
    BİRLİKTE GEÇEN ZAMAN
    ════════════════════════════════════ */
 const TIME_KEY = 'seninle-guzel-baslangic';
+const DEFAULT_START_DATE = '2025-11-19';
 
 function loadStartDate() {
   try {
-    return localStorage.getItem(TIME_KEY);
-  } catch (e) {
-    return null;
-  }
+    const stored = localStorage.getItem(TIME_KEY);
+    if (stored) return stored;
+  } catch (e) { /* sessiz geç */ }
+  return DEFAULT_START_DATE;
 }
 
 function saveStartDate(val) {
@@ -267,6 +268,7 @@ function updateTimeTogether() {
 
   form.hidden = true;
   display.hidden = false;
+  document.getElementById('time-input').value = stored;
 
   const start = new Date(stored);
   if (isNaN(start.getTime())) { form.hidden = false; display.hidden = true; return; }
