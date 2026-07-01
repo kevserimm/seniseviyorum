@@ -1,0 +1,414 @@
+/* ============================================
+   TOKENS
+   ============================================ */
+:root {
+  --midnight: #180a1e;
+  --midnight-deep: #0e0613;
+  --wine: #4a1942;
+  --rose: #ff6f9c;
+  --rose-soft: #ffa8c5;
+  --gold: #e8c78a;
+  --cream: #f6ece3;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--midnight-deep);
+  color: var(--cream);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ============================================
+   STAGE / BACKGROUND
+   ============================================ */
+.stage {
+  position: relative;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% -10%, var(--wine) 0%, var(--midnight) 45%, var(--midnight-deep) 100%);
+  padding-bottom: 4rem;
+  perspective: 1600px;
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.stars span {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: twinkle 4s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.9; }
+}
+
+.floating-hearts {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.floating-hearts .fh {
+  position: absolute;
+  bottom: -10%;
+  font-size: 1.2rem;
+  color: var(--rose);
+  opacity: 0.35;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.5; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(-115vh) translateX(20px) rotate(25deg); opacity: 0; }
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 5rem 1.5rem 1rem;
+}
+.eyebrow {
+  font-family: var(--font-body);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--gold);
+  margin: 0 0 1rem;
+}
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.8rem, 9vw, 6rem);
+  line-height: 1.05;
+  margin: 0;
+  color: var(--cream);
+}
+.title-line { display: block; }
+.title-line.accent {
+  font-style: italic;
+  font-weight: 600;
+  background: linear-gradient(100deg, var(--rose-soft), var(--gold) 60%, var(--rose));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.subtitle {
+  max-width: 34rem;
+  margin: 1.4rem auto 0;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--rose-soft);
+  opacity: 0.85;
+}
+
+/* ============================================
+   3D HEART — imza öğe
+   ============================================ */
+.heart-scene {
+  position: relative;
+  z-index: 2;
+  height: 260px;
+  margin: 2rem auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.heart-orbit-ring {
+  position: absolute;
+  border: 1px solid rgba(232, 199, 138, 0.35);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+}
+.ring-1 {
+  width: 220px;
+  height: 220px;
+  animation: spinRingX 9s linear infinite;
+}
+.ring-2 {
+  width: 300px;
+  height: 300px;
+  border-color: rgba(255, 111, 156, 0.25);
+  animation: spinRingX 14s linear infinite reverse;
+}
+@keyframes spinRingX {
+  from { transform: rotateX(78deg) rotateZ(0deg); }
+  to   { transform: rotateX(78deg) rotateZ(360deg); }
+}
+
+.heart-3d {
+  position: relative;
+  width: 130px;
+  height: 118px;
+  transform-style: preserve-3d;
+  animation: heartFlip 6s ease-in-out infinite, heartBeat 1.6s ease-in-out infinite;
+}
+@keyframes heartFlip {
+  0%, 40%  { transform: rotateY(0deg); }
+  50%, 90% { transform: rotateY(180deg); }
+  100%     { transform: rotateY(360deg); }
+}
+@keyframes heartBeat {
+  0%, 100% { scale: 1; }
+  15% { scale: 1.08; }
+  30% { scale: 0.98; }
+}
+
+.heart-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+.heart-face::before,
+.heart-face::after {
+  content: "";
+  position: absolute;
+  width: 65px;
+  height: 105px;
+  border-radius: 65px 65px 0 0;
+  top: 0;
+}
+.heart-face::before { left: 65px; transform: rotate(45deg); transform-origin: 0 100%; }
+.heart-face::after   { left: 0;    transform: rotate(-45deg); transform-origin: 100% 100%; }
+
+.heart-face.front::before,
+.heart-face.front::after {
+  background: linear-gradient(145deg, var(--rose-soft), var(--rose) 70%);
+  box-shadow: 0 0 45px rgba(255, 111, 156, 0.55);
+}
+.heart-face.back {
+  transform: rotateY(180deg);
+}
+.heart-face.back::before,
+.heart-face.back::after {
+  background: linear-gradient(145deg, var(--gold), #c99a52 70%);
+  box-shadow: 0 0 45px rgba(232, 199, 138, 0.5);
+}
+
+/* ============================================
+   3D CAROUSEL
+   ============================================ */
+.carousel-wrap {
+  position: relative;
+  z-index: 2;
+  margin-top: 3.5rem;
+  text-align: center;
+}
+.carousel-caption {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.8;
+  margin-bottom: 2.5rem;
+}
+.carousel-viewport {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+.carousel-3d {
+  position: relative;
+  width: 200px;
+  height: 130px;
+  transform-style: preserve-3d;
+  animation: carouselSpin 26s linear infinite;
+}
+.carousel-3d.paused { animation-play-state: paused; }
+
+.carousel-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1rem;
+  background: linear-gradient(160deg, rgba(74, 25, 66, 0.75), rgba(24, 10, 30, 0.9));
+  border: 1px solid rgba(232, 199, 138, 0.3);
+  backdrop-filter: blur(6px);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.carousel-card:hover {
+  border-color: var(--rose);
+  box-shadow: 0 0 30px rgba(255, 111, 156, 0.45);
+}
+.carousel-card .cc-phrase {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--cream);
+  text-align: center;
+}
+.carousel-card .cc-lang {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rose-soft);
+}
+
+@keyframes carouselSpin {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+
+.carousel-controls {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.carousel-controls button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 199, 138, 0.4);
+  background: transparent;
+  color: var(--gold);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, transform 0.25s;
+}
+.carousel-controls button:hover {
+  background: var(--rose);
+  color: var(--midnight-deep);
+  transform: translateY(-2px);
+}
+.carousel-controls button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   GRID — FLIP KARTLAR
+   ============================================ */
+.grid-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 1080px;
+  margin: 4.5rem auto 0;
+  padding: 0 1.5rem;
+}
+.grid-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.6rem;
+  text-align: center;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+.lang-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  perspective: 900px;
+}
+.flip-card {
+  height: 110px;
+  transform-style: preserve-3d;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.flip-card:hover,
+.flip-card:focus-visible {
+  transform: rotateY(180deg);
+}
+.flip-card:focus-visible { outline: none; }
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem;
+  text-align: center;
+}
+.flip-front {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 168, 197, 0.25);
+}
+.flip-front .fc-lang {
+  font-size: 0.85rem;
+  color: var(--cream);
+  font-weight: 500;
+}
+.flip-front .fc-flag {
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+.flip-back {
+  background: linear-gradient(150deg, var(--rose), var(--wine));
+  transform: rotateY(180deg);
+}
+.flip-back .fc-phrase {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--cream);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 5rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--rose-soft);
+  opacity: 0.7;
+  font-size: 0.95rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 480px) {
+  .heart-scene { height: 200px; }
+  .ring-1 { width: 170px; height: 170px; }
+  .ring-2 { width: 230px; height: 230px; }
+  .carousel-3d { width: 160px; height: 110px; }
+  .lang-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seni Seviyorum — Dünya Dillerinde</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="stage">
+    <div class="stars" id="stars"></div>
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <header class="hero">
+      <p class="eyebrow">bir cümle, bin dil</p>
+      <h1 class="title">
+        <span class="title-line">Seni</span>
+        <span class="title-line accent">Seviyorum</span>
+      </h1>
+      <p class="subtitle">Dünyanın dört bir yanında, aynı üç kelime — her dilde kendi rengini bulur.</p>
+    </header>
+
+    <!-- 3D dönen kalp: sayfanın imza öğesi -->
+    <div class="heart-scene">
+      <div class="heart-orbit-ring ring-1"></div>
+      <div class="heart-orbit-ring ring-2"></div>
+      <div class="heart-3d" id="heart3d">
+        <div class="heart-face front"></div>
+        <div class="heart-face back"></div>
+      </div>
+    </div>
+
+    <section class="carousel-wrap">
+      <p class="carousel-caption">Kartın üzerine gel, dünyayı çevir</p>
+      <div class="carousel-viewport">
+        <div class="carousel-3d" id="carousel"></div>
+      </div>
+      <div class="carousel-controls">
+        <button id="prevBtn" aria-label="Önceki dil">‹</button>
+        <button id="playBtn" aria-label="Döndürmeyi durdur / başlat">⏸</button>
+        <button id="nextBtn" aria-label="Sonraki dil">›</button>
+      </div>
+    </section>
+
+    <section class="grid-wrap">
+      <h2 class="grid-title">Tüm Diller</h2>
+      <div class="lang-grid" id="langGrid"></div>
+    </section>
+
+    <footer class="footer">
+      <p>Aşk çevrilmez, sadece yankılanır.</p>
+    </footer>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
