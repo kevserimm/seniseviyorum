@@ -29,28 +29,28 @@ const LANGUAGES = [
 ];
 
 /* ============================================
-   ARKA PLAN: yıldızlar
+   ARKA PLAN: altın tozu zerreleri
    ============================================ */
-function buildStars() {
-  const wrap = document.getElementById("stars");
-  const count = 90;
+function buildMotes() {
+  const wrap = document.getElementById("motes");
+  const count = 60;
   for (let i = 0; i < count; i++) {
     const s = document.createElement("span");
     s.style.left = Math.random() * 100 + "%";
     s.style.top = Math.random() * 100 + "%";
-    s.style.animationDelay = (Math.random() * 4).toFixed(2) + "s";
-    s.style.width = s.style.height = (Math.random() * 2 + 1).toFixed(1) + "px";
+    s.style.animationDelay = (Math.random() * 5).toFixed(2) + "s";
+    s.style.width = s.style.height = (Math.random() * 2 + 1.5).toFixed(1) + "px";
     wrap.appendChild(s);
   }
 }
 
 /* ============================================
-   ARKA PLAN: yükselen kalpler
+   ARKA PLAN: yükselen kalpler (tek tonlu)
    ============================================ */
 function buildFloatingHearts() {
   const wrap = document.getElementById("floatingHearts");
-  const symbols = ["❤", "♥", "💗"];
-  const count = 16;
+  const symbols = ["♥"];
+  const count = 12;
   for (let i = 0; i < count; i++) {
     const h = document.createElement("span");
     h.className = "fh";
@@ -161,7 +161,7 @@ function buildGrid() {
    BAŞLAT
    ============================================ */
 document.addEventListener("DOMContentLoaded", () => {
-  buildStars();
+  buildMotes();
   buildFloatingHearts();
   const { carousel, step } = buildCarousel();
   setupCarouselControls(carousel, step);
