@@ -238,44 +238,12 @@ function buildGrid() {
 /* ════════════════════════════════════
    BİRLİKTE GEÇEN ZAMAN
    ════════════════════════════════════ */
-const TIME_KEY = 'seninle-guzel-baslangic';
-const DEFAULT_START_DATE = '2025-11-19';
-
-function loadStartDate() {
-  try {
-    const stored = localStorage.getItem(TIME_KEY);
-    if (stored) return stored;
-  } catch (e) { /* sessiz geç */ }
-  return DEFAULT_START_DATE;
-}
-
-function saveStartDate(val) {
-  try {
-    localStorage.setItem(TIME_KEY, val);
-  } catch (e) { /* sessiz geç */ }
-}
+const START_DATE = new Date('2025-11-19T00:00:00');
 
 function updateTimeTogether() {
-  const stored = loadStartDate();
-  const display = document.getElementById('time-display');
-  const form    = document.getElementById('time-form');
-
-  if (!stored) {
-    display.hidden = true;
-    form.hidden = false;
-    return;
-  }
-
-  form.hidden = true;
-  display.hidden = false;
-  document.getElementById('time-input').value = stored;
-
-  const start = new Date(stored);
-  if (isNaN(start.getTime())) { form.hidden = false; display.hidden = true; return; }
-
   function tick() {
     const now = new Date();
-    let diff = Math.max(0, now - start);
+    let diff = Math.max(0, now - START_DATE);
 
     const day = 86400000;
     const years = Math.floor(diff / (day * 365.25));
@@ -295,27 +263,7 @@ function updateTimeTogether() {
     document.getElementById('tt-s').textContent = String(secs).padStart(2, '0');
   }
   tick();
-  clearInterval(window.__ttInterval);
-  window.__ttInterval = setInterval(tick, 1000);
-}
-
-function wireTimeForm() {
-  const form  = document.getElementById('time-form');
-  const input = document.getElementById('time-input');
-  const btn   = document.getElementById('time-save');
-  const reset = document.getElementById('time-reset');
-
-  btn.addEventListener('click', () => {
-    if (!input.value) return;
-    saveStartDate(input.value);
-    updateTimeTogether();
-  });
-
-  reset.addEventListener('click', () => {
-    try { localStorage.removeItem(TIME_KEY); } catch (e) {}
-    clearInterval(window.__ttInterval);
-    updateTimeTogether();
-  });
+  setInterval(tick, 1000);
 }
 
 /* ════════════════════════════════════
@@ -545,7 +493,6 @@ startHeroCycle();
 wireSpeechButtons();
 buildCarousel();
 buildGrid();
-wireTimeForm();
 updateTimeTogether();
 
 document.getElementById('note-btn').addEventListener('click', e => revealSweetNote(e.currentTarget));
