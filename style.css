@@ -299,6 +299,14 @@ header {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
 }
 
+.time-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-bottom: .5rem;
+}
+
 .time-since {
   font-size: .68rem;
   letter-spacing: .2em;
